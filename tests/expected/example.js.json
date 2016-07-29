@@ -1,18 +1,18 @@
 [
   {
     "type": "paragraph",
-    "value": "This is a description. Line 1. Line 2. Line 3."
+    "value": "<p>This is a description. Line 1. Line 2. Line 3.</p>\n"
   },
   {
     "type": "paragraph",
-    "value": "## Example"
+    "value": "<h2>Example</h2>\n"
   },
   {
     "type": "code",
-    "value": "```js\nfunction hello() {\n  console.log('Hi!');\n}\n```"
+    "value": "<pre><code class=\"language-js\">function hello() {\n  console.log('Hi!');\n}\n</code></pre>\n"
   },
   {
     "type": "paragraph",
-    "value": "Last line."
+    "value": "<p>Last line.</p>\n"
   }
 ]

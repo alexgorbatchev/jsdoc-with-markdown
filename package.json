@@ -38,6 +38,7 @@
   },
   "dependencies": {
     "gfm-code-blocks": "^0.3.0",
-    "lodash.merge": "^4.5.0"
+    "lodash.merge": "^4.5.0",
+    "remarkable": "^1.6.2"
   }
 }

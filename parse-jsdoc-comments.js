@@ -1,15 +1,16 @@
 import merge from 'lodash.merge';
 import parseCodeBlocks from 'gfm-code-blocks';
+import Remarkable from 'remarkable';
 
 const tagParsers = {
-  param(value) {
+  param(value, render) {
     const matches = value.match(/^\s*\{([\w\|]+)\}\s+(\w+)\s*-\s*(.*)$/);
 
     if (matches) {
       return {
         type: matches[1],
         name: matches[2],
-        description: matches[3],
+        description: render(matches[3]),
       };
     }
   }
@@ -47,17 +48,15 @@ function mergeParagraphLines(str, codeBlocks) {
     ;
 }
 
-function parseTagValue(tagName, tagValue) {
+function parseTagValue(tagName, tagValue, render) {
   const parser = tagParsers[tagName];
   const results = {
-    type: 'tag',
-    key: tagName,
-    value: tagValue,
+    type: tagName,
   };
 
   return parser
-    ? merge(results, { [ tagName ]: parser(tagValue) })
-    : { ...results, value: tagValue }
+    ? merge(results, { [ tagName ]: parser(tagValue, render) })
+    : { ...results, value: render(tagValue) }
     ;
 }
 
@@ -71,7 +70,7 @@ function getTag(line) {
   return [];
 }
 
-function splitIntoBlocks(str, codeBlocks) {
+function splitIntoBlocks(str, codeBlocks, render) {
   const blocks = [];
   let pos = 0;
   let offset = 0;
@@ -82,7 +81,7 @@ function splitIntoBlocks(str, codeBlocks) {
     if (codeBlock) {
       blocks.push({
         type: 'code',
-        value: codeBlock.block,
+        value: render(codeBlock.block),
       });
 
       offset = codeBlock.end + 1;
@@ -99,7 +98,7 @@ function splitIntoBlocks(str, codeBlocks) {
     ;
 }
 
-function processBlocks(blocks) {
+function processBlocks(blocks, render) {
   return blocks
     .map(block => {
       if (typeof block === 'object') {
@@ -109,18 +108,18 @@ function processBlocks(blocks) {
       const [ tagName, tagValue ] = getTag(block);
 
       if (tagName) {
-        return parseTagValue(tagName, tagValue);
+        return parseTagValue(tagName, tagValue, render);
       }
 
       return {
         type: 'paragraph',
-        value: block,
+        value: render(block),
       };
     })
     ;
 }
 
-export default function parseJSDocComments(input) {
+export default function parseJSDocComments(input, render) {
   let commentString = stripStars(input);
   let codeBlocks = parseCodeBlocks(commentString);
 
@@ -129,7 +128,13 @@ export default function parseJSDocComments(input) {
   // update position of all code blocks due to line shift
   codeBlocks = parseCodeBlocks(commentString);
 
+  if (!render) {
+    const markdown = new Remarkable();
+    render = value => markdown.render(value);
+  }
+
   return processBlocks(
-    splitIntoBlocks(commentString, codeBlocks)
+    splitIntoBlocks(commentString, codeBlocks, render),
+    render
   );
 }

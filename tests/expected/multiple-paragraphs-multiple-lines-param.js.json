@@ -1,20 +1,18 @@
 [
   {
     "type": "paragraph",
-    "value": "This is a description. And this is more of it."
+    "value": "<p>This is a description. And this is more of it.</p>\n"
   },
   {
-    "type": "tag",
-    "key": "param",
-    "value": "{Boolean} isAdditive -  Set to true to allow the dropdown to add in custom values. When `dropdownMode` is set to false, `isAdditive` is always true.",
+    "type": "param",
     "param": {
       "type": "Boolean",
       "name": "isAdditive",
-      "description": "Set to true to allow the dropdown to add in custom values. When `dropdownMode` is set to false, `isAdditive` is always true."
+      "description": "<p>Set to true to allow the dropdown to add in custom values. When <code>dropdownMode</code> is set to false, <code>isAdditive</code> is always true.</p>\n"
     }
   },
   {
     "type": "paragraph",
-    "value": "This is a second paragraph with two lines."
+    "value": "<p>This is a second paragraph with two lines.</p>\n"
   }
 ]

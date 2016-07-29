@@ -4,7 +4,7 @@
 ![Downloads](https://img.shields.io/npm/dm/jsdoc-with-markdown.svg)
 ![Version](https://img.shields.io/npm/v/jsdoc-with-markdown.svg)
 
-Parses JSDoc-like string into JSON assuming the formating is in Markdown.
+Parses JSDoc-like string into JSON assuming the formating is in Markdown. You can use [babel-extract-comments](https://github.com/jonschlinkert/babel-extract-comments) to extract comments from JavaScript source.
 
 ## Installation
 
@@ -32,15 +32,15 @@ parseJSDocComments(
 // [
 //   {
 //     "type": "paragraph",
-//     "value": "This is a description."
+//     "value": "<p>This is a description.</p>\n"
 //   },
 //   {
 //     "type": "paragraph",
-//     "value": "## Example"
+//     "value": "<h2>Example</h2>\n"
 //   },
 //   {
 //     "type": "code",
-//     "value": "```js\nfunction hello() {\n  console.log('Hi!');\n}\n```"
+//     "value": "<pre><code class=\"language-js\">function hello() {\n  console.log('Hi!');\n}\n</code></pre>\n"
 //   }
 // ]
 ```

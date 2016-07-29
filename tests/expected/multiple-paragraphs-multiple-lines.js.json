@@ -1,0 +1,10 @@
+[
+  {
+    "type": "paragraph",
+    "value": "This is a description. And this is more of it."
+  },
+  {
+    "type": "paragraph",
+    "value": "This is a second paragraph with two lines."
+  }
+]

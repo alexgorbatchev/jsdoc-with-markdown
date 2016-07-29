@@ -1,0 +1,14 @@
+[
+  {
+    "type": "paragraph",
+    "value": "This is a description."
+  },
+  {
+    "type": "paragraph",
+    "value": "## Example"
+  },
+  {
+    "type": "code",
+    "value": "```js\nfunction hello() {\n  console.log('Hi!');\n}\n```"
+  }
+]

@@ -56,7 +56,7 @@ function parseTagValue(tagName, tagValue, render) {
 
   return parser
     ? merge(results, { [ tagName ]: parser(tagValue, render) })
-    : { ...results, value: render(tagValue) }
+    : { ...results, value: tagValue }
     ;
 }
 

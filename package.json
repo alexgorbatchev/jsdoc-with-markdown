@@ -1,6 +1,6 @@
 {
   "name": "jsdoc-with-markdown",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Parses JSDoc-like string into JSON assuming the formating is in Markdown.",
   "main": "lib/parse-jsdoc-comments.js",
   "files": [

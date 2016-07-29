@@ -1,7 +1,7 @@
 [
   {
     "type": "paragraph",
-    "value": "This is a description."
+    "value": "This is a description. Line 1. Line 2. Line 3."
   },
   {
     "type": "paragraph",
@@ -10,5 +10,9 @@
   {
     "type": "code",
     "value": "```js\nfunction hello() {\n  console.log('Hi!');\n}\n```"
+  },
+  {
+    "type": "paragraph",
+    "value": "Last line."
   }
 ]
